@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "grok-build-delegate",
+      "type": "archive",
+      "description": "Run Grok Build CLI as a headless delegate. Use when the user names Grok Build or grok, says \"ask Grok\", wants an xAI-backed second opinion, or compares coding agents. Do NOT use for interactive sessions, other CLIs, or tasks not meant for delegation.",
+      "url": "https://raw.githubusercontent.com/letya999/grok-build-delegate/dev/dist/grok-build-delegate.zip",
+      "digest": "sha256:510b7158826abcf40f8147437d6c5daefec56609f700855e374de06d3e12c0ac",
+      "repository": "https://github.com/letya999/grok-build-delegate",
+      "license": "MIT",
+      "publisher": "Artem Letyushev"
+    }
+  ]
+}
