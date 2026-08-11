@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grok Build Delegate"
+  short_description: "Delegate tasks to Grok Build headlessly"
+  default_prompt: "Use $grok-build-delegate to delegate this task to Grok Build headlessly and return the verified result."
