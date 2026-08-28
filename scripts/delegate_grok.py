@@ -66,6 +66,7 @@ def main() -> int:
     parser.add_argument("--max-turns", type=int, help="Optional maximum number of agent turns")
     parser.add_argument("--session-id", help="Optional resumable headless session id")
     parser.add_argument("--always-approve", action="store_true", help="Approve Grok tool executions")
+    parser.add_argument("--trust", action="store_true", help="Trust the project for repo-local MCP, hooks, and plugins")
     parser.add_argument("--output-dir", help="Directory for captured output")
     args = parser.parse_args()
 
@@ -109,6 +110,8 @@ def main() -> int:
         command.extend(["--session-id", args.session_id])
     if args.always_approve:
         command.append("--always-approve")
+    if args.trust:
+        command.append("--trust")
 
     try:
         completed = run_bounded(command, cwd, timeout)
