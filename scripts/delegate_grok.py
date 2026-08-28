@@ -132,7 +132,7 @@ def main() -> int:
     try:
         payload = json.loads(completed.stdout)
         if isinstance(payload, dict):
-            manifest["response"] = next((payload[key] for key in ("result", "response", "content", "text", "output", "message") if key in payload), payload)
+            manifest["response"] = next((payload[key] for key in ("structuredOutput", "result", "response", "content", "text", "output", "message") if key in payload), payload)
         else:
             manifest["response"] = payload
         manifest["raw"] = payload
