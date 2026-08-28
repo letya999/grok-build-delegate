@@ -67,6 +67,15 @@ class TestRunBounded(unittest.TestCase):
 
 
 class TestMainCli(unittest.TestCase):
+    def test_structured_output_flags_are_forwarded(self) -> None:
+        mod = _load_module()
+        completed = subprocess.CompletedProcess([], 0, '{"text":{"ok":true}}', "")
+        with tempfile.TemporaryDirectory() as output_dir, mock.patch.object(mod, "find_grok", return_value=sys.executable), mock.patch.object(mod, "run_bounded", return_value=completed) as bounded, mock.patch.object(sys, "argv", ["delegate", "--cwd", str(SKILL_ROOT), "--task", "test", "--json-schema", '{"type":"object"}', "--max-turns", "2", "--output-dir", output_dir]):
+            self.assertEqual(mod.main(), 0)
+            command = bounded.call_args.args[0]
+            self.assertIn("--json-schema", command)
+            self.assertEqual(command[command.index("--max-turns") + 1], "2")
+
     def test_timeout_writes_manifest(self) -> None:
         mod = _load_module()
         with tempfile.TemporaryDirectory() as output_dir, mock.patch.object(mod, "find_grok", return_value=sys.executable), mock.patch.object(mod, "run_bounded", side_effect=subprocess.TimeoutExpired([], 1, output=b"partial", stderr=b"warning")), mock.patch.object(sys, "argv", ["delegate", "--cwd", str(SKILL_ROOT), "--task", "test", "--output-dir", output_dir]):

@@ -62,6 +62,8 @@ def main() -> int:
     parser.add_argument("--task", required=True, help="Task to delegate")
     parser.add_argument("--timeout", default="45m", help="Timeout, e.g. 90s, 45m, 2h")
     parser.add_argument("--model", help="Optional Grok model")
+    parser.add_argument("--json-schema", help="Optional JSON Schema for structured output")
+    parser.add_argument("--max-turns", type=int, help="Optional maximum number of agent turns")
     parser.add_argument("--session-id", help="Optional resumable headless session id")
     parser.add_argument("--always-approve", action="store_true", help="Approve Grok tool executions")
     parser.add_argument("--output-dir", help="Directory for captured output")
@@ -97,6 +99,12 @@ def main() -> int:
     command = [grok, "--no-auto-update", "-p", args.task, "--cwd", str(cwd), "--output-format", "json", "--no-alt-screen"]
     if args.model:
         command.extend(["--model", args.model])
+    if args.json_schema:
+        command.extend(["--json-schema", args.json_schema])
+    if args.max_turns is not None:
+        if args.max_turns <= 0:
+            parser.error("--max-turns must be greater than zero")
+        command.extend(["--max-turns", str(args.max_turns)])
     if args.session_id:
         command.extend(["--session-id", args.session_id])
     if args.always_approve:
