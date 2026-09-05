@@ -6,7 +6,7 @@
       "type": "archive",
       "description": "Run Grok Build CLI as a headless delegate. Use when the user names Grok Build or grok, says \"ask Grok\", wants an xAI-backed second opinion, or compares coding agents. Do NOT use for interactive sessions, other CLIs, or tasks not meant for delegation.",
       "url": "https://raw.githubusercontent.com/letya999/grok-build-delegate/dev/dist/grok-build-delegate.zip",
-      "digest": "sha256:510b7158826abcf40f8147437d6c5daefec56609f700855e374de06d3e12c0ac",
+      "digest": "sha256:c7db7047198f8d2ae8d97b1272f32999660d1529d16e9ced38cd14fb6ace7bb4",
       "repository": "https://github.com/letya999/grok-build-delegate",
       "license": "MIT",
       "publisher": "Artem Letyushev"
