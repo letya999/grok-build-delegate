@@ -1,4 +1,13 @@
 {
   "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
-  "skills": ["grok-build-delegate"]
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Delegates",
+      "description": "Run Grok Build CLI as a headless delegate.",
+      "skills": [
+        "grok-build-delegate"
+      ]
+    }
+  ]
 }
