@@ -30,7 +30,7 @@ Read [runtime-setup.md](references/runtime-setup.md) before invoking the wrapper
 ## Wrapper behavior
 
 - `delegate_grok.py` invokes `grok` directly, never through a shell, and supports `GROK_BIN` for an explicit executable path.
-- It uses Grok Build headless mode with `-p`, `--cwd`, `--output-format json`, and `--no-auto-update`; it adds `--always-approve` only when requested.
+- It uses Grok Build headless mode with `-p`, `--cwd`, `--output-format json`, and `--no-auto-update`; it adds `--always-approve` or project `--trust` only when requested.
 - It writes stdout, stderr, and a small result manifest to a temporary output directory, then prints the final captured response as JSON.
 - It returns nonzero for missing Grok, an invalid project directory, timeout, failed process, or malformed JSON. Do not hide these failures.
 - Prefer a one-shot invocation. Use `--session-id` only when the user explicitly asks for a resumable Grok session.
